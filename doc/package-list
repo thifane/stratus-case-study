@@ -1,0 +1,12 @@
+com.ibm.achievement.bo
+com.ibm.achievement.dao
+com.ibm.achievement.dao.impl
+com.ibm.achievement.dao.manager
+com.ibm.achievement.dao.model
+com.ibm.achievement.dao.util
+com.ibm.achievement.entity
+com.ibm.achievement.exception
+com.ibm.achievement.listener
+com.ibm.achievement.service
+com.ibm.achievement.service.jaxws
+com.ibm.achievement.util

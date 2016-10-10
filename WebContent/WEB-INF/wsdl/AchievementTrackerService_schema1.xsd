@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema targetNamespace="http://service.achievement.ibm.com/" version="1.0" xmlns:tns="http://service.achievement.ibm.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="AchievementTrackerException" type="tns:AchievementTrackerException"/>
+
+  <xs:element name="approveAchievement" type="tns:approveAchievement"/>
+
+  <xs:element name="approveAchievementResponse" type="tns:approveAchievementResponse"/>
+
+  <xs:element name="findAchievementByApproverID" type="tns:findAchievementByApproverID"/>
+
+  <xs:element name="findAchievementByApproverIDResponse" type="tns:findAchievementByApproverIDResponse"/>
+
+  <xs:element name="findAchievementByEmpID" type="tns:findAchievementByEmpID"/>
+
+  <xs:element name="findAchievementByEmpIDResponse" type="tns:findAchievementByEmpIDResponse"/>
+
+  <xs:element name="findAchievementById" type="tns:findAchievementById"/>
+
+  <xs:element name="findAchievementByIdResponse" type="tns:findAchievementByIdResponse"/>
+
+  <xs:element name="findAchievementCategories" type="tns:findAchievementCategories"/>
+
+  <xs:element name="findAchievementCategoriesResponse" type="tns:findAchievementCategoriesResponse"/>
+
+  <xs:element name="findAchievementSummery" type="tns:findAchievementSummery"/>
+
+  <xs:element name="findAchievementSummeryResponse" type="tns:findAchievementSummeryResponse"/>
+
+  <xs:element name="findAchievementType" type="tns:findAchievementType"/>
+
+  <xs:element name="findAchievementTypeResponse" type="tns:findAchievementTypeResponse"/>
+
+  <xs:element name="findAchievementTypes" type="tns:findAchievementTypes"/>
+
+  <xs:element name="findAchievementTypesResponse" type="tns:findAchievementTypesResponse"/>
+
+  <xs:element name="saveAchievement" type="tns:saveAchievement"/>
+
+  <xs:element name="saveAchievementResponse" type="tns:saveAchievementResponse"/>
+
+  <xs:complexType name="findAchievementById">
+    <xs:sequence>
+      <xs:element name="achievementId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findAchievementByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:achievementVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="achievementVO">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="achievementDoc" nillable="true" type="tns:achievementDocVO"/>
+      <xs:element name="achievementId" type="xs:int"/>
+      <xs:element minOccurs="0" name="achievementText" type="xs:string"/>
+      <xs:element minOccurs="0" name="achievementTypeId" type="xs:string"/>
+      <xs:element minOccurs="0" name="approverComment" type="xs:string"/>
+      <xs:element minOccurs="0" name="approverId" type="xs:string"/>
+      <xs:element name="approverPointVal" type="xs:int"/>
+      <xs:element minOccurs="0" name="employeeId" type="xs:string"/>
+      <xs:element minOccurs="0" name="endDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="projectId" type="xs:string"/>
+      <xs:element minOccurs="0" name="startDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="statusCode" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="achievementDocVO">
+    <xs:sequence>
+      <xs:element name="achievementId" type="xs:int"/>
+      <xs:element minOccurs="0" name="documentContent" type="xs:base64Binary"/>
+      <xs:element name="documentId" type="xs:int"/>
+      <xs:element minOccurs="0" name="documentName" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="AchievementTrackerException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findAchievementByApproverID">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="approverId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findAchievementByApproverIDResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:achievementVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findAchievementType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="typeId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findAchievementTypeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:achievementTypesVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="achievementTypesVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="typeId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="approveAchievement">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="achievementId" type="xs:string"/>
+      <xs:element minOccurs="0" name="status" type="xs:string"/>
+      <xs:element minOccurs="0" name="category" type="xs:string"/>
+      <xs:element name="pointValue" type="xs:int"/>
+      <xs:element minOccurs="0" name="approverComment" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="approveAchievementResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="saveAchievement">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="achievementVO" type="tns:achievementVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="saveAchievementResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findAchievementCategories">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="findAchievementCategoriesResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:achievementCatgryVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="achievementCatgryVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="categoryId" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findAchievementTypes">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="findAchievementTypesResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:achievementTypesVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findAchievementSummery">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="employeeId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findAchievementSummeryResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:achievementCountVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="achievementCountVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="currentMonthCount" type="xs:string"/>
+      <xs:element minOccurs="0" name="currentYearCount" type="xs:string"/>
+      <xs:element minOccurs="0" name="employeeId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findAchievementByEmpID">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="employeeId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findAchievementByEmpIDResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:achievementVO"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

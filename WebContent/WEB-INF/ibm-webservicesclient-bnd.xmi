@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.etools.webservice.wscbnd:ClientBinding xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.etools.webservice.wscbnd="http://www.ibm.com/websphere/appserver/schemas/5.0.2/wscbnd.xmi" xmi:id="ClientBinding_1428914693136">
+  <serviceRefs xmi:id="ServiceRef_1428914693145" serviceRefLink="service/UserManagementService">
+    <portQnameBindings xmi:id="PortQnameBinding_1428914693146" portQnameNamespaceLink="http://service.achievement.ibm.com/" portQnameLocalNameLink="UserManagementPort" overriddenEndpointURI="http://localhost:9080/AchievementTrackerService/UserManagementService"/>
+  </serviceRefs>
+  <serviceRefs xmi:id="ServiceRef_1429012163540" serviceRefLink="service/ProjectManagementService">
+    <portQnameBindings xmi:id="PortQnameBinding_1429012163540" portQnameNamespaceLink="http://service.achievement.ibm.com/" portQnameLocalNameLink="ProjectManagementPort" overriddenEndpointURI="http://localhost:9080/AchievementTrackerService/ProjectManagementService"/>
+  </serviceRefs>
+  <serviceRefs xmi:id="ServiceRef_1429012253837" serviceRefLink="service/EmployeeManagementService">
+    <portQnameBindings xmi:id="PortQnameBinding_1429012253837" portQnameNamespaceLink="http://service.achievement.ibm.com/" portQnameLocalNameLink="EmployeeManagementPort" overriddenEndpointURI="http://localhost:9080/AchievementTrackerService/EmployeeManagementService"/>
+  </serviceRefs>
+  <serviceRefs xmi:id="ServiceRef_1429012271115" serviceRefLink="service/AchievementTrackerService">
+    <portQnameBindings xmi:id="PortQnameBinding_1429012271115" portQnameNamespaceLink="http://service.achievement.ibm.com/" portQnameLocalNameLink="AchievementTrackerPort" overriddenEndpointURI="http://localhost:9080/AchievementTrackerService/AchievementTrackerService"/>
+  </serviceRefs>
+</com.ibm.etools.webservice.wscbnd:ClientBinding>

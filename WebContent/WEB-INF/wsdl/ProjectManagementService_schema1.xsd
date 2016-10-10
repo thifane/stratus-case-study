@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema targetNamespace="http://service.achievement.ibm.com/" version="1.0" xmlns:tns="http://service.achievement.ibm.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="AchievementTrackerException" type="tns:AchievementTrackerException"/>
+
+  <xs:element name="findEmployeeProjects" type="tns:findEmployeeProjects"/>
+
+  <xs:element name="findEmployeeProjectsResponse" type="tns:findEmployeeProjectsResponse"/>
+
+  <xs:element name="findProjectById" type="tns:findProjectById"/>
+
+  <xs:element name="findProjectByIdResponse" type="tns:findProjectByIdResponse"/>
+
+  <xs:element name="findProjects" type="tns:findProjects"/>
+
+  <xs:element name="findProjectsResponse" type="tns:findProjectsResponse"/>
+
+  <xs:complexType name="findEmployeeProjects">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="employeeId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findEmployeeProjectsResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:projectVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="projectVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="managerID" type="xs:string"/>
+      <xs:element minOccurs="0" name="projectID" type="xs:string"/>
+      <xs:element minOccurs="0" name="projectName" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="AchievementTrackerException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findProjects">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="findProjectsResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:projectVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findProjectById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="projectId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findProjectByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:projectVO"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

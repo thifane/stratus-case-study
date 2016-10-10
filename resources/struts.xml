@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.custom.i18n.resources" value="ApplicationResources" />
+	
+	<package name="default" extends="struts-default" namespace="/">
+		<result-types>
+			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+		
+		<action name="login" method="authenticate" class="org.ibm.achievementTracker.Action.LoginAction">
+			<result name="employee" type="tiles">welcome</result>
+			<result name="admin" type="redirectAction">/getUserList.action</result>
+			<result name="error">login.jsp</result>
+		</action>
+		
+		<action name="home" method="goHome" class="org.ibm.achievementTracker.Action.LoginAction">
+			<result name="success" type="tiles">welcome</result>
+			<result name="error">login.jsp</result>
+		</action>
+		
+		<action name="logoff" method="signOut" class="org.ibm.achievementTracker.Action.LoginAction">
+			<result name="success">login.jsp</result>
+			<result name="error">login.jsp</result>
+		</action>
+		
+		<action name="getUserList" method="init" class="org.ibm.achievementTracker.Action.UserApproval">
+			<result name="success">reviewuser.jsp</result>
+			<result name="error">login.jsp</result>
+		</action>
+		
+		<action name="approveUser" method="approve" class="org.ibm.achievementTracker.Action.UserApproval">
+			<result name="success">reviewuser.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="input">error.jsp</result>
+		</action>
+		
+		<action name="listachievements" method="init" class="org.ibm.achievementTracker.Action.ListAchievementsAction">
+			<result name="success" type="tiles">listachievements</result>
+			<result name="error">login.jsp</result>
+			<result name="input" type="tiles">listachievements</result>
+		</action>
+		
+		<action name="showAchievement" method="findAchievement" class="org.ibm.achievementTracker.Action.AchievementAction">
+			<result name="success" type="tiles">viewachievement</result>
+			<result name="error">login.jsp</result>
+			<result name="input">login.jsp</result>
+		</action>
+		
+		
+		<action name="reviewAchievement" method="reviewAchievement" class="org.ibm.achievementTracker.Action.AchievementAction">
+			<result name="success" type="redirectAction">/listachievements.action</result>
+			<result name="error">login.jsp</result>
+			<result name="input">login.jsp</result>
+		</action>
+		
+		<!--  <action name="register" method="execute" class="org.ibm.achievementTracker.Action.RegisterAction">
+			<result name="success">registerUser.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>-->
+		
+		<action name="lookup" method="execute" class="org.ibm.achievementTracker.Action.LookUpAction">
+			<result name="success">lookUp.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		
+		<action name="search" method="search" class="org.ibm.achievementTracker.Action.LookUpAction">
+			<result name="success">lookUp.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		
+		<!-- <action name="register"> 
+         <result>registerUser.jsp</result>
+      	</action> -->
+		
+		<action name="register"  class="org.ibm.achievementTracker.Action.RegisterAction">
+            <!-- <interceptor-ref name="defaultStack">
+            <param name="validation.excludeMethods">loadRegisterForm</param>
+            </interceptor-ref> -->
+            
+            <interceptor-ref name="validation">
+                <param name="excludeMethods">input</param>
+            </interceptor-ref>
+            <result name="success">/registerUser.jsp</result>
+            <result name="input">registerUser.jsp</result>	
+        </action>
+		
+		<!--  <action name="register" method="loadRegisterForm" class="org.ibm.achievementTracker.Action.RegisterAction">			
+			<result name="registerForm">registerUser.jsp</result>		 
+			<result name="error">error.jsp</result>
+		</action> -->
+		
+		<!-- <action name="register" method="loadRegisterForm" class="org.ibm.achievementTracker.Action.RegisterAction">			
+			<result name="registerForm">registerUser.jsp</result>		 
+			<result name="error">error.jsp</result>
+		</action> -->
+		
+		<action name="enterAchievement" method="init" class="org.ibm.achievementTracker.Action.EnterAchievementAction">
+			<!-- <result name="input">registerUser.jsp</result>	 -->
+			<result name="success" type="tiles">enterAchievement</result>
+			<result name="error">error.jsp</result>
+		</action>
+		
+		<action name="submitAchievement" method="saveAchievement" class="org.ibm.achievementTracker.Action.EnterAchievementAction">
+			<!-- <result name="input">registerUser.jsp</result>	 -->
+			<interceptor-ref name="fileUpload">
+			<param name="maximumSize">2097152</param>			 
+				<param name="allowedTypes">
+					 text/plain,image/png,image/gif,image/jpeg,image/pjpeg,application/pdf
+				</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="tiles">welcome</result>
+			<result name="input" type="tiles">enterAchievement</result>
+			<result name="error">error.jsp</result>
+		</action>
+		
+		<action name="registerUser" method="doRegister" class="org.ibm.achievementTracker.Action.RegisterAction">
+			<result name="input">registerUser.jsp</result>	
+			<result name="success">login.jsp</result>
+			<!-- <result name="error">error.jsp</result> -->
+		</action>
+		<action name="listachievementsself" method="init" class="org.ibm.achievementTracker.Action.ListAchievementsSelfAction">
+			<result name="success" type="tiles">listachievementsself</result>
+			<result name="error">login.jsp</result>
+			<result name="input" type="tiles">listachievementsself</result>
+		</action>
+		
+		<action name="listachievementsself" method="init" class="org.ibm.achievementTracker.Action.ListAchievementsSelfAction">
+			<result name="success" type="tiles">listachievementsself</result>
+			<result name="error">login.jsp</result>
+			<result name="input" type="tiles">listachievementsself</result>
+		</action>
+		
+		<action name="download" method="downloadFile1" class="org.ibm.achievementTracker.Action.AchievementAction">
+			<result name="success" type="stream">
+		  		<param name="contentType">application/octet-stream</param>
+		  		<param name="inputName">fileInputStream</param>
+		 	 	<param name="contentDisposition">attachment;filename="fileABC.txt"</param>
+		  		<param name="bufferSize">1024</param>
+			</result>
+   		</action>		
+		
+	</package>
+	
+</struts>

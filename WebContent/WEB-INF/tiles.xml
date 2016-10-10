@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+  <definition name="baseLayout" template="/baseLayout.jsp">
+      <put-attribute name="title"  value="Template"/>
+      <put-attribute name="header" value="/header.jsp"/>
+      <put-attribute name="menu"   value="/menu.jsp"/>
+      <put-attribute name="body"   value="/body.jsp"/>
+      <put-attribute name="footer"   value="/footer.jsp"/>
+  </definition>
+  
+  <definition name="welcome" extends="baseLayout">
+      <put-attribute name="title"  value="Welcome"/>
+      <put-attribute name="body"   value="/welcome.jsp"/>      
+  </definition>
+  
+  <definition name="listachievements" extends="baseLayout">
+      <put-attribute name="title"  value="List Achievements"/>
+      <put-attribute name="body"   value="/listachievements.jsp"/>  
+  </definition>
+  
+  <definition name="enterAchievement" extends="baseLayout">
+      <put-attribute name="title"  value="enter Achievements"/>
+      <put-attribute name="body"   value="/enterachievement.jsp"/>  
+  </definition>
+    
+    <definition name="submitAchievement" extends="baseLayout">
+      <put-attribute name="title"  value="enter Achievements"/>
+      <put-attribute name="body"   value="/enterachievement.jsp"/>  
+  </definition>
+    
+    
+  <definition name="viewachievement" extends="baseLayout">
+      <put-attribute name="title"  value="Approve Achievement"/>
+      <put-attribute name="body"   value="/achievementreview.jsp"/>      
+  </definition>
+  
+  <definition name="listachievementsself" extends="baseLayout">
+      <put-attribute name="title"  value="List Achievements Self"/>
+      <put-attribute name="body"   value="/listachievementsself.jsp"/>  
+  </definition>
+  
+</tiles-definitions>
